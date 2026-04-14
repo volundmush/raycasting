@@ -77,49 +77,49 @@ Kind of like a Cathode Ray Tube image but in reverse?
 
 ### 1) Ray equation
 
-\[
+$$
 \mathbf{p}(t) = \mathbf{e} + t\,\mathbf{d}
-\]
+$$
 
-- \(\mathbf{e}\): ray origin (camera or bounced hit point)
-- \(\mathbf{d}\): ray direction (unit vector)
-- \(t > 0\): distance along ray
+- $\mathbf{e}$: ray origin (camera or bounced hit point)
+- $\mathbf{d}$: ray direction (unit vector)
+- $t > 0$: distance along ray
 
-Plain English: start at origin and walk forward in a direction by distance \(t\).
+Plain English: start at origin and walk forward in a direction by distance $t$.
 
 ### 2) Sphere intersection
 
 Sphere implicit form:
 
-\[
+$$
 \|\mathbf{p}-\mathbf{c}\|^2 - r^2 = 0
-\]
+$$
 
-Substitute \(\mathbf{p}(t)\) and solve quadratic:
+Substitute $\mathbf{p}(t)$ and solve quadratic:
 
-\[
+$$
 At^2 + Bt + C = 0
-\]
+$$
 
-\[
+$$
 t = \frac{-B \pm \sqrt{B^2 - 4AC}}{2A}
-\]
+$$
 
-Plain English: if discriminant \(B^2-4AC\) is negative, ray misses. Otherwise, the smallest positive \(t\) is the first visible hit.
+Plain English: if discriminant $B^2-4AC$ is negative, ray misses. Otherwise, the smallest positive $t$ is the first visible hit.
 
 ### 3) Plane intersection
 
-Plane through point \(\mathbf{p}_1\) with normal \(\mathbf{n}\):
+Plane through point $\mathbf{p}_1$ with normal $\mathbf{n}$:
 
-\[
+$$
 (\mathbf{p}-\mathbf{p}_1)\cdot\mathbf{n}=0
-\]
+$$
 
 Ray-plane solve:
 
-\[
+$$
 t = \frac{(\mathbf{p}_1-\mathbf{e})\cdot\mathbf{n}}{\mathbf{d}\cdot\mathbf{n}}
-\]
+$$
 
 Plain English: if denominator is near zero, ray is parallel to plane (no useful hit).
 
@@ -127,21 +127,21 @@ Plain English: if denominator is near zero, ray is parallel to plane (no useful 
 
 Diffuse:
 
-\[
+$$
 I_d = k_d\,\max(0,\mathbf{n}\cdot\mathbf{l})\,\mathbf{c}
-\]
+$$
 
 Specular (Blinn-Phong half-vector form):
 
-\[
+$$
 I_s = k_s\,\max(0,\mathbf{n}\cdot\mathbf{h})^{\alpha}
-\]
+$$
 
 Total local light:
 
-\[
+$$
 I_{local} = I_a + \sum_{lights}(I_d + I_s)
-\]
+$$
 
 Plain English:
 - diffuse = "how directly the surface faces the light"
@@ -149,15 +149,15 @@ Plain English:
 
 ### 5) Reflection ray
 
-\[
+$$
 \mathbf{r} = \mathbf{d} - 2(\mathbf{d}\cdot\mathbf{n})\mathbf{n}
-\]
+$$
 
 Plain English: bounce direction, just like a mirror.
 
 ### 6) Refraction ray (Snell-based)
 
-Using indices of refraction \(\eta_i\) and \(\eta_t\), compute transmitted direction.
+Using indices of refraction $\eta_i$ and $\eta_t$, compute transmitted direction.
 
 If the term inside the square root goes negative, total internal reflection occurs (no transmission ray).
 
@@ -176,7 +176,7 @@ Plain English: transparent materials bend rays when entering/exiting. Good ol' r
 
 ### 2) Reflection
 
-- Materials have `reflectivity` in \([0,1]\).
+- Materials have `reflectivity` in $[0,1]$.
 - A reflection ray is cast from the hit point.
 - Reflected color is blended with local color.
 
